@@ -15,24 +15,24 @@ UMyBTTask_FindDestination::UMyBTTask_FindDestination()
 
 EBTNodeResult::Type UMyBTTask_FindDestination::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
-    //Super::ExecuteTask(OwnerComp, NodeMemory);
-    //
-    //auto CurrentPawn = OwnerComp.GetAIOwner()->GetPawn();
-    //if (CurrentPawn != nullptr)
-    //{
-    //    auto NaveSystem = UNavigationSystemV1::GetNavigationSystem(GetWorld());
-    //    if (NaveSystem != nullptr)
-    //    {
-    //        FNavLocation RandomLocation;
-    //        if (NaveSystem->GetRandomReachablePointInRadius(CurrentPawn->GetActorLocation(), 500.f, RandomLocation))
-    //        {
-    //            OwnerComp.GetBlackboardComponent()->SetValueAsVector(FName(TEXT("Destination")), RandomLocation);
-    //
-    //            return EBTNodeResult::Succeeded;
-    //        }
-    //
-    //    }
-    //}
+    Super::ExecuteTask(OwnerComp, NodeMemory);
+    
+    auto CurrentPawn = OwnerComp.GetAIOwner()->GetPawn();
+    if (CurrentPawn != nullptr)
+    {
+        auto NaveSystem = UNavigationSystemV1::GetNavigationSystem(GetWorld());
+        if (NaveSystem != nullptr)
+        {
+            FNavLocation RandomLocation;
+            if (NaveSystem->GetRandomReachablePointInRadius(CurrentPawn->GetActorLocation(), 500.f, RandomLocation))
+            {
+                OwnerComp.GetBlackboardComponent()->SetValueAsVector(FName(TEXT("Destination")), RandomLocation);
+    
+                return EBTNodeResult::Succeeded;
+            }
+    
+        }
+    }
 
 	return EBTNodeResult::Type();
 }			

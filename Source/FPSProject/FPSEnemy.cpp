@@ -2,6 +2,8 @@
 
 
 #include "FPSEnemy.h"
+#include "Components/CapsuleComponent.h"
+#include "FPSAIController.h"
 
 // Sets default values
 AFPSEnemy::AFPSEnemy()
@@ -17,6 +19,8 @@ AFPSEnemy::AFPSEnemy()
 		GetMesh()->SetRelativeLocationAndRotation(FVector(0.f, 0.f, -90.f), FRotator(0.f, -90.f, 0.f));
 
 	}
+
+	AIControllerClass = AFPSAIController::StaticClass();
 
 }
 
