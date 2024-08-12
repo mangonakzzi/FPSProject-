@@ -15,17 +15,17 @@ UBTDecorator_Attackable::UBTDecorator_Attackable()
 bool UBTDecorator_Attackable::CalculateRawConditionValue(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) const
 {
 	bool Result = Super::CalculateRawConditionValue(OwnerComp, NodeMemory);
-
+	
 	auto CurrentPawn = OwnerComp.GetAIOwner()->GetPawn();
 	if (CurrentPawn == nullptr)
 		return false;
-
+	
 	auto Target = Cast<AFPSCharacter>(OwnerComp.GetBlackboardComponent()->GetValueAsObject(FName("Target")));
 	if (Target == nullptr)
 		return false;
-
+	
 	if (Result && Target->GetDistanceTo(CurrentPawn) < 200.f)
 		return true;
-
+	
     return false;
 }

@@ -24,7 +24,7 @@ EBTNodeResult::Type UMyBTTask_FindDestination::ExecuteTask(UBehaviorTreeComponen
         if (NaveSystem != nullptr)
         {
             FNavLocation RandomLocation;
-            if (NaveSystem->GetRandomReachablePointInRadius(CurrentPawn->GetActorLocation(), 500.f, RandomLocation))
+            if (NaveSystem->GetRandomReachablePointInRadius(CurrentPawn->GetActorLocation(), 1000.f, RandomLocation))
             {
                 OwnerComp.GetBlackboardComponent()->SetValueAsVector(FName(TEXT("Destination")), RandomLocation);
     
