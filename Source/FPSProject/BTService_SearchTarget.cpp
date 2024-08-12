@@ -5,6 +5,7 @@
 #include "FPSAIController.h"
 #include "FPSCharacter.h"
 #include "Engine/OverlapResult.h"
+#include "BehaviorTree/BlackboardComponent.h"
 
 UBTService_SearchTarget::UBTService_SearchTarget()
 {
@@ -16,7 +17,7 @@ UBTService_SearchTarget::UBTService_SearchTarget()
 void UBTService_SearchTarget::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, float DeltaSeconds)
 {
 	Super::TickNode(OwnerComp, NodeMemory, DeltaSeconds);
-	
+
 	auto CurrentPawn = OwnerComp.GetAIOwner()->GetPawn();
 	if (CurrentPawn != nullptr)
 	{
@@ -27,7 +28,7 @@ void UBTService_SearchTarget::TickNode(UBehaviorTreeComponent& OwnerComp, uint8*
 			float SearchDistance = 500.f;
 			TArray<FOverlapResult> OverlapResults;
 			FCollisionQueryParams QueryParams(NAME_Name, false, CurrentPawn);
-	
+
 			bool Result = World->OverlapMultiByChannel
 			(
 				OverlapResults,
@@ -37,7 +38,7 @@ void UBTService_SearchTarget::TickNode(UBehaviorTreeComponent& OwnerComp, uint8*
 				FCollisionShape::MakeSphere(SearchDistance),
 				QueryParams
 			);
-	
+
 			if (Result)
 			{
 				for (auto& OverlapResult : OverlapResults)
@@ -45,13 +46,25 @@ void UBTService_SearchTarget::TickNode(UBehaviorTreeComponent& OwnerComp, uint8*
 					AFPSCharacter* FPSCharacter = Cast<AFPSCharacter>(OverlapResult.GetActor());
 					if (FPSCharacter)
 					{
-						UE_LOG(LogTemp, Log, TEXT("Find Character"));
+						DrawDebugSphere(World, Center, SearchDistance, 10, FColor::Green, false, 0.5f);
+						OwnerComp.GetBlackboardComponent()->SetValueAsObject(FName("Target"), FPSCharacter);
+						return;
 					}
 				}
+
+
+				DrawDebugSphere(World, Center, SearchDistance, 10, FColor::Red, false, 0.5f);
+				OwnerComp.GetBlackboardComponent()->SetValueAsObject(FName("Target"), nullptr);
 			}
-	
+			else
+			{
+
+				DrawDebugSphere(World, Center, SearchDistance, 10, FColor::Red, false, 0.5f);
+				OwnerComp.GetBlackboardComponent()->SetValueAsObject(FName("Target"), nullptr);
+			}
+
 		}
-	
+
 	}
 
 }
