@@ -104,8 +104,6 @@ void UFPSAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 			}
 		}
 
-
-		UE_LOG(LogTemp, Log, TEXT("Rotation : %f"), RotateYaw);
 	}
 
 }

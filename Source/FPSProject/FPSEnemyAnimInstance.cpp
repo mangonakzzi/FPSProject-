@@ -5,6 +5,7 @@
 #include "GameFramework/Character.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
+
 UFPSEnemyAnimInstance::UFPSEnemyAnimInstance()
 {
 	static ConstructorHelpers::FObjectFinder<UAnimMontage> AM(TEXT("/Script/Engine.AnimMontage'/Game/ParagonMurdock/Characters/Heroes/Murdock/Animations/Fire_Fast_Montage.Fire_Fast_Montage'"));
