@@ -22,11 +22,10 @@ public:
 	class UCharacterMovementComponent* CharacterMovement;
 	UPROPERTY(Category = "Animaiton", VisibleAnywhere, BlueprintReadOnly)
 	bool ShouldMove = false;
+	UPROPERTY(Category = "Animation", EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = true))
+	float Horizontal;
 	UPROPERTY(Category = "Animaiton", EditAnywhere, BlueprintReadOnly)
 	UAnimMontage* AttackMontage;
-
-public:
-	void FireMontage();
 
 public:
 	virtual void NativeBeginPlay() override;

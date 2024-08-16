@@ -5,6 +5,8 @@
 #include "GameFramework/Character.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
+#include "FPSEnemy.h"
+
 
 UFPSEnemyAnimInstance::UFPSEnemyAnimInstance()
 {
@@ -39,8 +41,10 @@ void UFPSEnemyAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 	if (IsValid(CharacterMovement))
 	{
 		FVector Velocity = CharacterMovement->Velocity;
-		float Speed = Velocity.Size2D();
-		ShouldMove = Speed > 3.f;
+		FRotator Rotation = FPSEnemy->GetActorRotation();
+		FVector UnRotateVector = Rotation.UnrotateVector(Velocity);
+
+		Horizontal = UnRotateVector.Y;
 	}
 
 }
