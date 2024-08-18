@@ -63,7 +63,6 @@ void AFPSCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 
 
 	PlayerInputComponent->BindAction(TEXT("Jump"), EInputEvent::IE_Pressed, this, &AFPSCharacter::Jump);
-	PlayerInputComponent->BindAction(TEXT("Fire"), EInputEvent::IE_Pressed, this, &AFPSCharacter::Fire);
 
 }
 
@@ -93,18 +92,18 @@ void AFPSCharacter::MouseLookUpDown(float Value)
 
 void AFPSCharacter::Fire()
 {
-	if (IsValid(FPSAnimInstance))
-	{
-		FPSAnimInstance->PlayFireMontage();
-		FTransform SocketTransform = GetMesh()->GetSocketTransform(FName("gun_pin"));
-		FVector SocketLocation = SocketTransform.GetLocation();
-		FRotator SocketRotation = SocketTransform.GetRotation().Rotator();
-		FActorSpawnParameters params;
-		params.Owner = this;
-
-
-		auto MyArrow = GetWorld()->SpawnActor<AProjectile>(SocketLocation, SocketRotation, params);
-
-	}
+	//if (IsValid(FPSAnimInstance))
+	//{
+	//	FPSAnimInstance->PlayFireMontage();
+	//	FTransform SocketTransform = GetMesh()->GetSocketTransform(FName("gun_pin"));
+	//	FVector SocketLocation = SocketTransform.GetLocation();
+	//	FRotator SocketRotation = SocketTransform.GetRotation().Rotator();
+	//	FActorSpawnParameters params;
+	//	params.Owner = this;
+	//
+	//
+	//	auto MyArrow = GetWorld()->SpawnActor<AProjectile>(SocketLocation, SocketRotation, params);
+	//
+	//}
 
 }

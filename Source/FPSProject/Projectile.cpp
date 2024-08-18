@@ -16,16 +16,15 @@ AProjectile::AProjectile()
 
 	if (StaticMesh.Succeeded())
 	{
-		Mesh->SetStaticMesh(StaticMesh.Object);
-		Mesh->SetRelativeLocationAndRotation(FVector(0.f, 100.f, 0.f), FRotator(0.f, 90.f, 0.f));
-		Mesh->SetRelativeScale3D(FVector(0.5f, 0.5f, 0.5f));
+		//Mesh->SetStaticMesh(StaticMesh.Object);
+		//Mesh->SetRelativeLocationAndRotation(FVector(0.f, 100.f, 0.f), FRotator(0.f, 90.f, 0.f));
+		//Mesh->SetRelativeScale3D(FVector(0.5f, 0.5f, 0.5f));
 	}
 
-	//CollisionMesh = CreateDefaultSubobject<UBoxComponent>(TEXT("Collison Mesh"));
 	CollisionMesh = CreateDefaultSubobject<UBoxComponent>(FName("Collison Mesh"));
 	CollisionMesh->SetupAttachment(Mesh);
-	CollisionMesh->SetRelativeLocation(FVector(12.f, 0.f, 0.f));
-	CollisionMesh->SetRelativeScale3D(FVector(0.45f, 0.45f, 0.45f));
+	//CollisionMesh->SetRelativeLocation(FVector(12.f, 0.f, 0.f));
+	//CollisionMesh->SetRelativeScale3D(FVector(0.45f, 0.45f, 0.45f));
 
 	ProjectileMovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(FName("ProjectileMovementComponent"));
 	ProjectileMovementComponent->SetUpdatedComponent(DefaultRoot);
