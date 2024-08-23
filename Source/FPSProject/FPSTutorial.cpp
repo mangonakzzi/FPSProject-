@@ -30,6 +30,9 @@ AFPSTutorial::AFPSTutorial()
 	StaticMesh->SetupAttachment(RootComponent);
 	BoxCollision->SetupAttachment(StaticMesh);
 
+	StaticMesh->SetRelativeLocation(FVector(0.f, 0.f, 200.f));
+	BoxCollision->SetRelativeLocation(FVector(0.f, 0.f, -75.f));
+
 }
 
 // Called when the game starts or when spawned
