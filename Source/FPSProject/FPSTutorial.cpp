@@ -20,13 +20,6 @@ AFPSTutorial::AFPSTutorial()
 
 	}
 
-	//ConstructorHelpers::FObjectFinder<UMaterial> Material(TEXT("/Script/Engine.Material'/Engine/EditorResources/FieldNodes/_Resources/M_FieldRadiusPreview.M_FieldRadiusPreview'"));
-	//if (Material.Succeeded())
-	//{
-	//	StaticMesh->SetMaterialByName()
-	//
-	//}
-
 	StaticMesh->SetupAttachment(RootComponent);
 	BoxCollision->SetupAttachment(StaticMesh);
 

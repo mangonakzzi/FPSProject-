@@ -28,11 +28,9 @@ AProjectile::AProjectile()
 
 	ProjectileMovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(FName("ProjectileMovementComponent"));
 	ProjectileMovementComponent->SetUpdatedComponent(DefaultRoot);
-	ProjectileMovementComponent->InitialSpeed = 8000.f;
-	ProjectileMovementComponent->MaxSpeed = 8000.f;
-	ProjectileMovementComponent->bRotationFollowsVelocity = true;
-	ProjectileMovementComponent->bShouldBounce = true;
-	ProjectileMovementComponent->Bounciness = 0.3f;
+	ProjectileMovementComponent->InitialSpeed = 500.f;
+	ProjectileMovementComponent->MaxSpeed = 500.f;
+	ProjectileMovementComponent->ProjectileGravityScale = 0;
 }
 
 // Called when the game starts or when spawned
@@ -46,12 +44,6 @@ void AProjectile::BeginPlay()
 void AProjectile::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
-}
-
-void AProjectile::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
-{
-
 
 }
 
