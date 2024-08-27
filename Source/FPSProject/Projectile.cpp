@@ -3,7 +3,7 @@
 
 #include "Projectile.h"
 #include "Components/BoxComponent.h"
-#include "GameFramework/ProjectileMovementComponent.h"
+#include "GameFramework/ProjectileMovementComponent.h"\
 
 // Sets default values
 AProjectile::AProjectile()
@@ -31,6 +31,8 @@ AProjectile::AProjectile()
 	ProjectileMovementComponent->InitialSpeed = 500.f;
 	ProjectileMovementComponent->MaxSpeed = 500.f;
 	ProjectileMovementComponent->ProjectileGravityScale = 0;
+
+	
 }
 
 // Called when the game starts or when spawned
