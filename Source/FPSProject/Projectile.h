@@ -19,9 +19,7 @@ private:
 	UPROPERTY(VisibleAnywhere)
 	class UProjectileMovementComponent* ProjectileMovementComponent;
 	UPROPERTY(VisibleAnywhere)
-	USceneComponent* DefaultRoot; 
-	UPROPERTY(VisibleAnywhere)
-	class UParticleSystemComponent* ParticleSystem;
+	USceneComponent* DefaultRoot;
 	
 public:	
 	// Sets default values for this actor's properties
