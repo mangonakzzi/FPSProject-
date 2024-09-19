@@ -3,7 +3,6 @@
 
 #include "FPSEnemy.h"
 #include "Components/CapsuleComponent.h"
-#include "FPSAIController.h"
 
 // Sets default values
 AFPSEnemy::AFPSEnemy()
@@ -26,8 +25,6 @@ AFPSEnemy::AFPSEnemy()
 		GetMesh()->SetAnimClass(AI.Class);
 
 	}
-
-	AIControllerClass = AFPSAIController::StaticClass();
 
 }
 
