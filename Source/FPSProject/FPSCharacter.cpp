@@ -55,26 +55,10 @@ void AFPSCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-	PlayerInputComponent->BindAxis(TEXT("MoveUpDown"), this, &AFPSCharacter::KeyUpDown);
-	PlayerInputComponent->BindAxis(TEXT("MoveLeftRight"), this, &AFPSCharacter::KeyLeftRight);
-
 	PlayerInputComponent->BindAxis(TEXT("LookLeftRight"), this, &AFPSCharacter::MouseLookLeftRight);
 	PlayerInputComponent->BindAxis(TEXT("LookUpDown"), this, &AFPSCharacter::MouseLookUpDown);
 
-
 	PlayerInputComponent->BindAction(TEXT("Jump"), EInputEvent::IE_Pressed, this, &AFPSCharacter::Jump);
-
-}
-
-void AFPSCharacter::KeyUpDown(float Value)
-{
-	AddMovementInput(GetActorForwardVector(), Value);
-
-}
-
-void AFPSCharacter::KeyLeftRight(float Value)
-{
-	AddMovementInput(GetActorRightVector(), Value);
 
 }
 
@@ -87,23 +71,5 @@ void AFPSCharacter::MouseLookLeftRight(float Value)
 void AFPSCharacter::MouseLookUpDown(float Value)
 {
 	AddControllerPitchInput(Value);
-
-}
-
-void AFPSCharacter::Fire()
-{
-	//if (IsValid(FPSAnimInstance))
-	//{
-	//	FPSAnimInstance->PlayFireMontage();
-	//	FTransform SocketTransform = GetMesh()->GetSocketTransform(FName("gun_pin"));
-	//	FVector SocketLocation = SocketTransform.GetLocation();
-	//	FRotator SocketRotation = SocketTransform.GetRotation().Rotator();
-	//	FActorSpawnParameters params;
-	//	params.Owner = this;
-	//
-	//
-	//	auto MyArrow = GetWorld()->SpawnActor<AProjectile>(SocketLocation, SocketRotation, params);
-	//
-	//}
 
 }
