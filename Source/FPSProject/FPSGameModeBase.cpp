@@ -12,5 +12,4 @@ AFPSGameModeBase::AFPSGameModeBase()
 	{
 		DefaultPawnClass = BP_FPSCharacter.Class;
 	}
-
 }
